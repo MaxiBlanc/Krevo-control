@@ -228,3 +228,74 @@ body, html {
   opacity: 0.5;
   background-color: #f9f9f9;
 }
+
+
+.login-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: linear-gradient(135deg, var(--verde-fondo) 0%, var(--turquesa-logo) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px); /* Efecto vidrio */
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 380px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.login-card h2 {
+  color: var(--verde-oscuro-texto);
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.login-input-style {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #eee;
+  border-radius: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.login-input-style:focus {
+  border-color: var(--turquesa-logo);
+  box-shadow: 0 0 10px rgba(57, 143, 130, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-login {
+  background: var(--turquesa-logo);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(57, 143, 130, 0.3);
+}
+
+.btn-login:hover {
+  background: var(--verde-oscuro-texto);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(57, 143, 130, 0.4);
+}

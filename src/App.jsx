@@ -11,6 +11,25 @@ const App = () => {
     const [categorias, setCategorias] = useState([]);
     const [productos, setProductos] = useState([]);
     const [categoriaActiva, setCategoriaActiva] = useState(null);
+    
+const CLAVE_CORRECTA = import.meta.env.VITE_APP_PASSWORD; // La clave se almacena en una variable de entorno    '; 
+const [autorizado, setAutorizado] = useState(false);
+const [password, setPassword] = useState('');
+const [error, setError] = useState(false);
+
+// 2. Función de validación
+const verificarClave = (e) => {
+    e.preventDefault();
+    
+    if (password === CLAVE_CORRECTA) {
+        setAutorizado(true);
+        setError(false);
+    } else {
+        setError(true); // Mostramos el mensaje de "Contraseña incorrecta"
+        setPassword(''); // Limpiamos el input
+    }
+};
+
 
     useEffect(() => {
         const qCat = query(collection(db, "categorias"), orderBy("nombre", "asc"));
@@ -186,6 +205,45 @@ const App = () => {
 
     // Obtenemos los datos de la categoría que está seleccionada actualmente
     const catActual = categorias.find(c => c.id === categoriaActiva);
+
+    if (!autorizado) {
+    return (
+        <div className="login-screen">
+            <form className="login-card" onSubmit={verificarClave}>
+                <img src="/vite.jpeg" alt="Logo" className="header-logo-img" />
+                <h2>Panel de Administración</h2>
+                
+                <input 
+                    type="password" 
+                    className="login-input-style" 
+                    placeholder="Introduce la clave" 
+                    value={password} 
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        if(error) setError(false); // Oculta el error mientras el usuario escribe
+                    }} 
+                />
+                
+                <button type="submit" className="btn-login">
+                    Entrar
+                </button>
+
+                {/* MENSAJE DE ERROR CONDICIONAL */}
+                {error && (
+                    <p style={{ 
+                        color: '#ff4d4d', 
+                        fontSize: '14px', 
+                        marginTop: '10px',
+                        fontWeight: 'bold',
+                        textAlign: 'center' 
+                    }}>
+                        ❌ Contraseña incorrecta. Inténtalo de nuevo.
+                    </p>
+                )}
+            </form>
+        </div>
+    );
+}
 
     return (
         <div className="admin-container">
