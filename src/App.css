@@ -1,4 +1,4 @@
-/* AdminPanel.css - VERSIÓN TABS DESLIZABLES OPTIMIZADA MOBILE */
+/* AdminPanel.css - VERSIÓN OSCURA CON PROPORCIONES OPTIMIZADAS */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
 :root {
@@ -15,27 +15,24 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: var(--verde-fondo);
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
+body, html {
+  background-color: var(--verde-fondo) !important;
+  color: var(--blanco) !important;
   width: 100%;
   overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .admin-container {
+  min-height: 100vh;
+  width: 100vw;
   padding: 15px;
-  width: 100%;
-  max-width: 850px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* LOGO */
+/* LOGO - Medida igual a la versión que funciona */
 .admin-header-logo {
   width: 100%;
   display: flex;
@@ -44,86 +41,86 @@ body {
 }
 
 .header-logo-img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--blanco);
 }
 
-/* BARRA DE CATEGORÍAS DESLIZABLE */
+/* BARRA DE CATEGORÍAS - IGUAL A LA VERSIÓN FUNCIONAL */
 .categories-nav-wrapper {
   width: 100%;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  background-color: var(--verde-fondo);
+  z-index: 100;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 25px;
-  background: rgba(255,255,255,0.05);
-  padding: 10px;
-  border-radius: 15px;
-  position: sticky;
-  top: 10px;
-  z-index: 100;
 }
 
 .categories-nav {
   display: flex;
-  flex-wrap: nowrap;
   overflow-x: auto;
+  white-space: nowrap;
   gap: 10px;
-  padding: 5px;
-  flex: 1;
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  padding: 5px 15px;
+  width: auto;
+  max-width: calc(100% - 60px);
 }
 
-.categories-nav::-webkit-scrollbar {
-  display: none;
-}
+.categories-nav::-webkit-scrollbar { display: none; }
 
 .cat-tab {
-  background: #333;
-  color: white;
+  background-color: #333;
+  color: var(--blanco);
   padding: 10px 20px;
-  border-radius: 50px;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  font-size: 0.8rem;
+  border-radius: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem; /* Medida exacta */
   border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.2s all ease;
   flex-shrink: 0;
 }
 
 .cat-tab.active {
-  background: var(--blanco);
+  background-color: var(--blanco);
   color: var(--verde-oscuro-texto);
   border-color: var(--accent);
 }
 
-.btn-new-cat {
+.btn-new-cat-inline {
+  color: var(--blanco);
   background: var(--accent);
-  color: white;
-  border: none;
+  border: 2px solid var(--blanco);
   width: 40px;
   height: 40px;
-  border-radius: 12px;
-  font-size: 1.2rem;
+  border-radius: 50%;
+  font-size: 1.6rem;
   cursor: pointer;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  line-height: 0;
 }
 
 /* CARD DE PRODUCTOS */
 .admin-cat-card {
   background-color: var(--blanco);
   border-radius: 20px;
-  overflow: hidden;
   width: 100%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  margin-bottom: 20px;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  overflow: hidden;
+  margin-bottom: 30px;
 }
 
 .admin-cat-header {
@@ -133,53 +130,57 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
-/* FILA DE PRODUCTO - FLEXBOX PARA MEJOR RESPUESTA */
+/* FILA DE PRODUCTO - ESTRUCTURA FLEX */
 .admin-prod-row {
   display: flex;
   padding: 15px;
   border-bottom: 1px solid #eee;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .product-info-col {
   flex: 1;
-  min-width: 0; /* Permite que el texto se trunque si es muy largo */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .p-name {
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--turquesa-logo);
-  display: block;
-  word-wrap: break-word;
+  text-transform: uppercase;
 }
 
 .p-price {
   font-weight: 700;
   color: #27ae60;
   font-size: 1rem;
-  margin-top: 4px;
 }
 
 .p-desc {
   font-size: 0.75rem;
-  color: #777;
-  margin-top: 4px;
-  line-height: 1.2;
+  color: #666;
+  font-style: italic;
+  line-height: 1.3;
 }
 
 .p-img {
-  width: 70px;
-  height: 70px;
+  width: 75px;
+  height: 75px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
+  border: 2px solid var(--turquesa-logo);
   flex-shrink: 0;
   margin-left: auto;
+  margin-right: 10px; /* Distancia entre imagen y botones */
 }
 
+/* BOTONES REDONDOS - Medidas calcadas de la versión que funciona */
 .prod-btns-right {
   display: flex;
   flex-direction: column;
@@ -187,35 +188,43 @@ body {
   flex-shrink: 0;
 }
 
-/* BOTONES REDONDEADOS TIPO VERSIÓN 2 */
 .btn-edit1, .btn-delete1 {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
-  cursor: pointer;
-  border: 1px solid #ddd;
+  font-weight: bold;
 }
 
-.btn-edit1 { background: #f1f1f1; color: #333; }
-.btn-delete1 { background: #ffe5e5; color: #d63031; border-color: #fab1a0; }
+.btn-edit1 { 
+  background: #f1f1f1; 
+  color: #333; 
+  border: 1px solid #ddd; 
+}
+
+.btn-delete1 { 
+  background: #ffe5e5; 
+  color: #ad1d1d; 
+  border: 1px solid #fab1a0; 
+}
 
 .btn-add {
   background: var(--accent);
   color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 0.7rem;
   font-weight: 700;
-  font-size: 0.75rem;
   cursor: pointer;
-  margin: 15px;
+  margin: 10px auto;
+  display: block;
 }
 
 .out-of-stock-row {
+  opacity: 0.5;
   background-color: #f9f9f9;
-  opacity: 0.6;
 }
