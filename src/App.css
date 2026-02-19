@@ -128,25 +128,64 @@ body, html {
   color: white;
   padding: 15px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Título a la izquierda, botones a la derecha */
+  align-items: center; 
+  gap: 15px;
+}
+
+/* Este contenedor envuelve el H3 y los botones de la categoría */
+.cat-title-block {
+  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between; /* Fuerza el espacio entre nombre y botones */
+  width: 100%;
+}
+
+.cat-title-block h3 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Contenedor específico para los botones que están al lado del título */
+.cat-header-btns {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0; /* Evita que los botones se achiquen */
 }
 
 /* FILA DE PRODUCTO - ESTRUCTURA FLEX */
+/* Asegura que la fila distribuya el espacio */
 .admin-prod-row {
   display: flex;
   padding: 15px;
   border-bottom: 1px solid #eee;
-  align-items: center;
+  align-items: center; 
   gap: 12px;
+  width: 100%; /* Ocupa el ancho total de la card */
 }
 
+/* 2. La columna de texto debe ser flexible pero no infinita */
 .product-info-col {
-  flex: 1;
+  flex: 1; /* Esto hace que tome todo el espacio sobrante a la IZQUIERDA */
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  min-width: 0; /* Crucial para que el ellipsis del nombre funcione */
+}
+
+/* El contenedor de texto */
+/* Este es el contenedor que creamos en el HTML para envolver a ambos */
+.p-main-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* Cambio: Alinea todo a la izquierda */
+  align-items: center;
+  gap: 12px; /* Espacio fijo entre Nombre y Precio */
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 .p-name {
@@ -154,13 +193,43 @@ body, html {
   font-size: 0.85rem;
   color: var(--turquesa-logo);
   text-transform: uppercase;
+  
+  /* Esto permite que el nombre crezca pero no empuje al precio fuera de la card */
+  max-width: 60%; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1; 
 }
 
 .p-price {
   font-weight: 700;
   color: #27ae60;
   font-size: 1rem;
+  white-space: nowrap; /* Evita que el precio se rompa en dos líneas */
+  text-align: right;
 }
+
+/* Ajuste de la imagen para que no empuje los botones */
+.p-img {
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #eee;
+  flex-shrink: 0; /* EVITA que la imagen se achique o se desplace */
+  margin: 0 10px; 
+}
+
+/* 4. Los botones siempre firmes a la derecha */
+.prod-btns-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0; /* EVITA que los botones se muevan */
+  margin-left: auto; /* Ancla los botones al final derecho */
+}
+
 
 .p-desc {
   font-size: 0.75rem;
@@ -169,24 +238,8 @@ body, html {
   line-height: 1.3;
 }
 
-.p-img {
-  width: 75px;
-  height: 75px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid var(--turquesa-logo);
-  flex-shrink: 0;
-  margin-left: auto;
-  margin-right: 10px; /* Distancia entre imagen y botones */
-}
 
-/* BOTONES REDONDOS - Medidas calcadas de la versión que funciona */
-.prod-btns-right {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex-shrink: 0;
-}
+
 
 .btn-edit1, .btn-delete1 {
   width: 35px;

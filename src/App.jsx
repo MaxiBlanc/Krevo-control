@@ -272,44 +272,51 @@ const verificarClave = (e) => {
             {catActual ? (
                 <div className="admin-cat-card">
                     <div className="admin-cat-header">
-                        <div className="cat-title-block">
-                            <h2>{catActual.nombre}</h2>
-                            <button className="btn-edit" onClick={() => abrirModalCategoria(catActual)}>✎</button>
+  <div className="cat-title-block">
+    <h2>{catActual.nombre}</h2>
+    <div className="cat-header-btns">
+       {/* Aquí van tus botones de editar/borrar categoría (los circulares) */}
+       <button className="btn-edit" onClick={() => abrirModalCategoria(catActual)}>✎</button>
                             <button className="btn-delete" onClick={() => eliminarCategoria(catActual.id, catActual.nombre)}>✕</button>
-                        </div>
-                        <button className="btn-add" onClick={() => abrirModalProducto(null, catActual.nombre)}>
+                            <button className="btn-add" onClick={() => abrirModalProducto(null, catActual.nombre)}>
                             + PRENDA
                         </button>
-                    </div>
-
+    </div>
+  </div>
+</div>
+                            
                     <div className="admin-prod-list">
                         {productos
                             .filter(p => p.categoria === catActual.nombre)
                             .map(p => (
                                 <div key={p.id} className={`admin-prod-row ${p.stock === false ? 'out-of-stock-row' : ''}`}>
-                                    <div className="prod-info-left">
-                                        <span className="p-name">{p.nombre}</span>
-                                        <span className="p-price">${p.precio}</span>
-                                        <div style={{fontSize: '0.75rem', marginTop: '4px'}}>
-                                            Talle: <strong>{p.talle || '-'}</strong> | 
-                                            <span style={{color: p.stock !== false ? '#2ecc71' : '#e74c3c', fontWeight: 'bold', marginLeft: '5px'}}>
-                                                {p.stock !== false ? '● STOCK' : '○ AGOTADO'}
-                                            </span>
-                                        </div>
-                                        <p className="p-desc">{p.descripcion}</p>
-                                    </div>
-                                    <div className="prod-img-center">
-                                        <img 
-                                            src={p.imagenes?.[0] || p.imagen || 'https://via.placeholder.com/150'} 
-                                            alt="" className="p-img" 
-                                            style={{ filter: p.stock === false ? 'grayscale(1)' : 'none' }}
-                                        />
-                                    </div>
-                                    <div className="prod-btns-right">
-                                        <button className="btn-edit1" onClick={() => abrirModalProducto(p)}>✎</button>
-                                        <button className="btn-delete1" onClick={() => eliminarProducto(p.id)}>✕</button>
-                                    </div>
-                                </div>
+    <div className="product-info-col">
+        
+        {/* NUEVO CONTENEDOR PARA NOMBRE Y PRECIO EN LA MISMA LÍNEA */}
+        <div className="p-main-info">
+            <span className="p-name">{p.nombre}</span>
+            <span className="p-price">${p.precio}</span>
+        </div>
+        
+        <div style={{fontSize: '0.75rem', marginTop: '4px'}}>
+            Talle: <strong>{p.talle || '-'}</strong> | 
+            <span style={{color: p.stock !== false ? '#2ecc71' : '#e74c3c', fontWeight: 'bold', marginLeft: '5px'}}>
+                {p.stock !== false ? '● STOCK' : '○ AGOTADO'}
+            </span>
+        </div>
+        <p className="p-desc">{p.descripcion}</p>
+    </div>
+
+    <img 
+        src={p.imagenes?.[0] || p.imagen || 'https://via.placeholder.com/150'} 
+        alt="" className="p-img" 
+    />
+
+    <div className="prod-btns-right">
+        <button className="btn-edit1" onClick={() => abrirModalProducto(p)}>✎</button>
+        <button className="btn-delete1" onClick={() => eliminarProducto(p.id)}>✕</button>
+    </div>
+</div>
                             ))
                         }
                     </div>
