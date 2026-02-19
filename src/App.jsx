@@ -260,7 +260,7 @@ const verificarClave = (e) => {
                             className={`cat-tab ${categoriaActiva === cat.id ? 'active' : ''}`}
                             onClick={() => setCategoriaActiva(cat.id)}
                         >
-                            {cat.imagen && <img src={cat.imagen} alt="" style={{width: '18px', height: '18px', borderRadius: '50%'}} />}
+                            {/* {cat.imagen && <img src={cat.imagen} alt="" style={{width: '18px', height: '18px', borderRadius: '50%'}} />} */}
                             {cat.nombre}
                         </div>
                     ))}
