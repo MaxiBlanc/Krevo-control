@@ -299,3 +299,29 @@ body, html {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(57, 143, 130, 0.4);
 }
+
+.login-input-style {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #eee;
+  border-radius: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+  
+  /* ESTO CORRIGE LOS PINES BLANCOS */
+  background-color: #ffffff !important;
+  color: #000000 !important; /* Fuerza el texto/pines a negro */
+  color-scheme: light;        /* Le dice al cel que este input es modo claro */
+}
+
+/* También esto para asegurar que el autocompletado no te rompa el color */
+.login-input-style:-webkit-autofill,
+.login-input-style:-webkit-autofill:hover, 
+.login-input-style:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000000 !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
+}

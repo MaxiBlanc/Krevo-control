@@ -12,7 +12,7 @@ const App = () => {
     const [productos, setProductos] = useState([]);
     const [categoriaActiva, setCategoriaActiva] = useState(null);
     
-const CLAVE_CORRECTA = import.meta.env.VITE_APP_PASSWORD; // La clave se almacena en una variable de entorno    '; 
+const CLAVE_CORRECTA = import.meta.env.VITE_ADMIN_PASSWORD; // La clave se almacena en una variable de entorno    '; 
 const [autorizado, setAutorizado] = useState(false);
 const [password, setPassword] = useState('');
 const [error, setError] = useState(false);
@@ -210,7 +210,7 @@ const verificarClave = (e) => {
     return (
         <div className="login-screen">
             <form className="login-card" onSubmit={verificarClave}>
-                <img src="/vite.jpeg" alt="Logo" className="header-logo-img" />
+                <img src="/vite.png" alt="Logo" className="header-logo-img" />
                 <h2>Panel de Administración</h2>
                 
                 <input 
