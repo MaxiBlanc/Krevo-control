@@ -1,0 +1,268 @@
+/* AdminPanel.css - VERSIÓN TABS DESLIZABLES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root {
+  --turquesa-logo: #000000;
+  --verde-fondo: #1b1b1b;
+  --blanco: #ffffff;
+  --verde-oscuro-texto: #202020;
+  --accent: #398F82;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--verde-fondo);
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10px;
+  min-height: 100vh;
+}
+
+.admin-container {
+  padding: 15px;
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LOGO */
+.admin-header-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.header-logo-img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--blanco);
+}
+
+/* BARRA DE CATEGORÍAS DESLIZABLE */
+.categories-nav-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.categories-nav {
+  display: flex;
+  flex-wrap: nowrap; /* Evita que bajen a la siguiente línea */
+  overflow-x: auto;   /* Habilita el deslizamiento horizontal */
+  gap: 12px;
+  padding: 5px;
+  flex: 1;
+  scrollbar-width: none; /* Oculta scroll en Firefox */
+  -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
+
+.categories-nav::-webkit-scrollbar {
+  display: none; /* Oculta scroll en Chrome/Safari */
+}
+
+.cat-tab {
+  background: #333;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  white-space: nowrap; /* IMPORTANTE: evita que el texto se amontone */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid transparent;
+}
+
+.cat-tab.active {
+  background: var(--blanco);
+  color: var(--verde-oscuro-texto);
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.btn-new-cat {
+  background: var(--accent);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  flex-shrink: 0; /* Evita que el botón se achique */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD DE PRODUCTOS */
+.admin-cat-card {
+  background-color: var(--blanco);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.admin-cat-header {
+  background-color: var(--turquesa-logo);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cat-title-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* FILA DE PRODUCTO (3 COLUMNAS) */
+.admin-prod-row {
+  display: grid;
+  grid-template-columns: 1fr 100px 90px;
+  gap: 15px;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.p-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--turquesa-logo);
+  display: block;
+}
+
+.p-price {
+  font-weight: 700;
+  color: #2ecc71;
+  font-size: 1.1rem;
+}
+
+.p-desc {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 5px;
+}
+
+.p-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.prod-btns-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* BOTONES PEQUEÑOS */
+.btn-edit{
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-delete {
+  background: #ffe5e5;
+  color: #d63031;
+  border: 1px solid #fab1a0;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-edit:hover {
+  background: #333;
+  color: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #d63031;
+  color: #ffe5e5;
+  border: 1px solid #fab1a0;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-add {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.btn-edit1 {
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-delete1 {
+  background: #ffe5e5;
+  color: #d63031;
+  border: 1px solid #fab1a0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-edit1:hover {
+  background: #333;
+  color: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-delete1:hover {
+  background: #d63031;
+  color: #ffe5e5;
+  border: 1px solid #fab1a0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.out-of-stock-row {
+  background-color: #fcfcfc;
+  opacity: 0.8;
+}
