@@ -241,7 +241,7 @@ body, html {
 
 
 
-.btn-edit1, .btn-delete1 {
+.btn-edit1, .btn-delete1, .btn-edit, .btn-delete {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -252,13 +252,13 @@ body, html {
   font-weight: bold;
 }
 
-.btn-edit1 { 
+.btn-edit1, .btn-edit { 
   background: #f1f1f1; 
   color: #333; 
   border: 1px solid #ddd; 
 }
 
-.btn-delete1 { 
+.btn-delete1, .btn-delete { 
   background: #ffe5e5; 
   color: #ad1d1d; 
   border: 1px solid #fab1a0; 
